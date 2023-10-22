@@ -90,7 +90,8 @@ const getOptionSets = (conversationStyle: BingConversationStyle, allowSeach = tr
       'eredirecturl',
       'clgalileo',
       'gencontentv3',
-      'fluxv14l'
+      'fluxv14l',
+      'nojbfedge',
     ]
   }[conversationStyle]
   if (allowSeach === false) {

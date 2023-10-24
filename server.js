@@ -32,9 +32,10 @@ app.prepare().then(() => {
           res.end(String(count))
         })
       } else if (pathname.endsWith('/create')) {
-        await app.render(req, res, '/api/create', query)
+        await app.render(req, res, '/api/create2', query)
       } else if (pathname.endsWith('/completions')) {
-        await app.render(req, res, '/api/openai/chat/completions', query)
+        await res.end('forbidden')
+        // await app.render(req, res, '/api/openai/chat/completions', query)
       } else if (pathname.endsWith('/models')) {
         res.end(JSON.stringify({
           data: [

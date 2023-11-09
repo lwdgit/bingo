@@ -31,6 +31,8 @@ app.prepare().then(() => {
         server.getConnections(function (error, count) {
           res.end(String(count))
         })
+      } if (pathname.endsWith('/create')) {
+        await app.render(req, res, '/api/create', query)
       } else if (pathname.endsWith('/create')) {
         await app.render(req, res, '/api/create2', query)
       } else if (pathname.endsWith('/completions')) {

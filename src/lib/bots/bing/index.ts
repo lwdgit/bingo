@@ -138,6 +138,10 @@ export class BingWebBot {
   private lastText = ''
   private asyncTasks: Array<Promise<any>> = []
 
+  get isInitial() {
+    return (this.conversationContext?.invocationId??0) < 1
+  }
+
   constructor(opts: {
     endpoint?: string
     cookie?: string
@@ -219,7 +223,7 @@ export class BingWebBot {
         'GenerateContentQuery',
         'SearchQuery',
       ],
-      previousMessages: conversation.invocationId === 0 && conversation.context?.length ? [{
+      previousMessages: conversation.context?.length ? [{
         author: 'user',
         description: conversation.context,
         contextType: 'WebPage',
@@ -363,11 +367,11 @@ export class BingWebBot {
       })
     })
     const conversation = this.conversationContext!
-    conversation.invocationId++
     const textDecoder = createChunkDecoder()
     for await (const chunk of streamAsyncIterable(response.body!)) {
       this.parseEvents(params, websocketUtils.unpackMessage(textDecoder(chunk)))
     }
+    conversation.invocationId++
   }
 
   async sendWs() {

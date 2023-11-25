@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
-import pkg from '../../package.json'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -102,7 +101,7 @@ export function UserMenu() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="flex-col items-start">
-            <div className="font-medium">版本信息 {pkg.version}</div>
+            <div className="font-medium">版本信息 2.0.0</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="flex-col items-start">
